@@ -84,6 +84,10 @@ switch strCallback
         fnLoadAnatVol();
     case 'LoadFuncVol'
         fnLoadFuncVol();
+    case 'LoadMultiFuncVol'
+        fn_LoadMultiFuncVol_WL();
+    case 'ApplyFuncTransfToAll'
+        fn_ApplyFuncTransfToAll_WL();
     case 'ShowHideCrosshairs'
         fnHideShowPlanes2D();
     case 'ShowFunctional'

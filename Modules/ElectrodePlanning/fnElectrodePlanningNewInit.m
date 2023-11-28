@@ -163,7 +163,7 @@ iOffset = 2;
 iHeight = aiWindowSize(4);
 iFigureWidth = aiWindowSize(3);
 
-iRightPanelWidth = 300;
+iRightPanelWidth = 450;
 
 strctPanel.m_aiRightPanelSize = [iFigureWidth-iRightPanelWidth-iOffset 1 iRightPanelWidth iHeight-30];
 
@@ -338,12 +338,22 @@ hold(strctPanel.m_strct3D.m_hAxes,'on');
 % strctPanel.m_hStatusLine = uicontrol('style','text','String','Status Line','Position',...
 %      [5 strctPanel.m_aiWindowsPanelSize(4)-20 600 15],'parent',strctPanel.m_hWindowsPanel);
 
-strctPanel.m_hLoadAnatVolBut =  uicontrol('style','pushbutton','String','Load Anatomical',...
-    'Position',[10  strctPanel.m_aiRightPanelSize(4)-140 100 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'LoadAnatVol'});
 
+% Original button "Load Anatomical"
+strctPanel.m_hLoadAnatVolBut = uicontrol('style','pushbutton','String','Load Anatomical',...
+    'Position',[10 strctPanel.m_aiRightPanelSize(4)-140 100 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'LoadAnatVol'});
 
-strctPanel.m_hLoadFuncVolBut =  uicontrol('style','pushbutton','String','Load Overlay',...
-    'Position',[160  strctPanel.m_aiRightPanelSize(4)-140 100 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'LoadFuncVol'});
+% Adjusted position for "Load Overlay" to make space for a new button
+strctPanel.m_hLoadFuncVolBut = uicontrol('style','pushbutton','String','Load Overlay',...
+    'Position',[120 strctPanel.m_aiRightPanelSize(4)-140 100 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'LoadFuncVol'});
+
+% New button "Load Multiple Func"
+strctPanel.m_hLoadMultiFuncVolBut = uicontrol('style','pushbutton','String','Load Multiple',...
+    'Position',[230 strctPanel.m_aiRightPanelSize(4)-140 100 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'LoadMultiFuncVol'});
+
+% New button "Apply Transf to All"
+strctPanel.m_hApplyTransfToAllBut = uicontrol('style','pushbutton','String','Apply Transf to All',...
+    'Position',[340 strctPanel.m_aiRightPanelSize(4)-140 130 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'ApplyFuncTransfToAll'});
 
 
 strctPanel.m_hAnatMenu = uicontextmenu;

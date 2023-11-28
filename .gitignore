@@ -1,2 +1,11 @@
 
 *.lnk
+*.mat
+*.mp4
+
+*.reg
+*.nii
+Documentation
+*.asv
+Maodan
+*.mat_backup
