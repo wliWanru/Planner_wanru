@@ -1,4 +1,4 @@
-function  fn_ApplyFuncTransfToAll_WL()
+function  fn_ApplyFuncTransToAll_WL()
 
 global g_strctModule
 if g_strctModule.m_iCurrFuncVol == 0
@@ -17,10 +17,10 @@ n_func_vols = length(g_strctModule.m_acFuncVol);
 
 for i_vol = 1:n_func_vols
     g_strctModule.m_acFuncVol{i_vol}.m_a2fReg = ...
-    inv(a2fTrans) * g_strctModule.m_acFuncVol{i_vol}.m_a2fReg;%#ok
+    inv(a2fTrans) * g_strctModule.m_acFuncVol{i_vol}.m_a2fReg; 
 end
 
-fprintf('\n applied func transform to all %d FuncVols \n');
+fprintf('\n applied func inv transform to all %d FuncVols \n');
 
 
 fnInvalidate(1);

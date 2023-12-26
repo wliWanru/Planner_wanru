@@ -351,9 +351,17 @@ strctPanel.m_hLoadFuncVolBut = uicontrol('style','pushbutton','String','Load Ove
 strctPanel.m_hLoadMultiFuncVolBut = uicontrol('style','pushbutton','String','Load Multiple',...
     'Position',[230 strctPanel.m_aiRightPanelSize(4)-140 100 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'LoadMultiFuncVol'});
 
-% New button "Apply Transf to All"
-strctPanel.m_hApplyTransfToAllBut = uicontrol('style','pushbutton','String','Apply Transf to All',...
-    'Position',[340 strctPanel.m_aiRightPanelSize(4)-140 130 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'ApplyFuncTransfToAll'});
+% New button "Apply Trans to All"
+strctPanel.m_hApplyTransToAllBut = uicontrol('style','pushbutton','String','Apply Trans to All',...
+    'Position',[340 strctPanel.m_aiRightPanelSize(4)-140 130 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'ApplyFuncTransToAll'});
+
+% New button "Apply Inv Trans to All"
+strctPanel.m_hApplyInvTransToAllBut = uicontrol('style','pushbutton','String','Apply Inv Trans to All',...
+    'Position',[340 strctPanel.m_aiRightPanelSize(4)-190 130 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'ApplyFuncInvTransToAll'});
+
+% % New button "Apply Inv Trans to All"
+% strctPanel.m_hApplyInvTransToAllBut = uicontrol('style','pushbutton','String','Apply Inv Trans to All',...
+%     'Position',[1 1 130 30],'parent',strctPanel.m_ahRightPanels(1),'callback',{@fnCallback,'ApplyFuncInvTransToAll'});
 
 
 strctPanel.m_hAnatMenu = uicontextmenu;
