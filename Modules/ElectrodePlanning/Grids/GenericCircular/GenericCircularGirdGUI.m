@@ -859,3 +859,27 @@ end
 fprintf(hFileID,'</CONTAINER>\n');
 
 fclose(hFileID);
+
+
+% --- Executes on button press in h_remove_unselected_holes.
+function h_remove_unselected_holes_Callback(hObject, eventdata, handles)
+% -- WL
+% hObject    handle to h_remove_unselected_holes (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+strctGridModel = getappdata(handles.figure1,'strctGridModel');
+
+already_selected_holes = strctGridModel.m_strctGridParams.m_abSelectedHoles;
+not_selected_holes = ~already_selected_holes;
+
+
+aiSelectedHoles = not_selected_holes;
+if isempty(aiSelectedHoles)
+    return;
+end;
+strctGridModel = fnDeleteHoles(strctGridModel, aiSelectedHoles);
+setappdata(handles.figure1,'aiSelectedHoles',[]);
+fnUpdateGridModel(handles,strctGridModel);
+
+
+
