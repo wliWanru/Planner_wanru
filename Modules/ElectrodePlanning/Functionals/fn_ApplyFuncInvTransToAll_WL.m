@@ -18,6 +18,13 @@ n_func_vols = length(g_strctModule.m_acFuncVol);
 for i_vol = 1:n_func_vols
     g_strctModule.m_acFuncVol{i_vol}.m_a2fReg = ...
     g_strctModule.m_acFuncVol{i_vol}.m_a2fReg * (a2fTrans);  %#ok
+    % -- WL 
+    if isfield(g_strctModule.m_acFuncVol{i_vol}, 'm_cellRegFnames')
+        g_strctModule.m_acFuncVol{i_vol}.m_cellRegFnames{end+1} = fullfile(strPath, strFile);
+    else
+        g_strctModule.m_acFuncVol{i_vol}.m_cellRegFnames = {fullfile(strPath, strFile)};
+    end
+    % --
 end
 
 fprintf('\n applied func transform to all %d FuncVols \n');

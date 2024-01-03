@@ -1,4 +1,4 @@
-function bInitOK = fnElectrodePlanningNewInit(strctParams)
+ function bInitOK = fnElectrodePlanningNewInit(strctParams)
 % The way module appearance is controlled is by g_strctModule.m_hWindowsPanel
 % and g_strctModule.m_ahAxes, all other stuff are module-dependent
 global g_strctModule g_strctWindows
@@ -398,7 +398,12 @@ uimenu(strctPanel.m_hFuncMenu, 'Label', 'Apply Inv Transform','Callback', {@fnCa
 uimenu(strctPanel.m_hFuncMenu, 'Label', 'Export Reg Matrix','Callback', {@fnCallback,'ExportFuncRegMatrix',0});
 uimenu(strctPanel.m_hFuncMenu, 'Label', 'Export','Callback', {@fnCallback,'ExportFuncVol'});
 uimenu(strctPanel.m_hFuncMenu, 'Label', 'Info','Callback', {@fnCallback,'PrintInfoFunc'});
+
+% -- WL
+uimenu(strctPanel.m_hFuncMenu, 'Label', 'WL: Remove All','Callback', {@fnCallback,'RemoveFuncAll'});
+% --
 uimenu(strctPanel.m_hFuncMenu, 'Label', 'Remove','Callback', {@fnCallback,'RemoveFunc',0},'separator','on');
+
 
 strctPanel.m_hFuncMoveMenu = uimenu(strctPanel.m_hFuncMenu, 'Label', 'Move in list');
 uimenu(strctPanel.m_hFuncMoveMenu, 'Label', 'Down','Callback', {@fnCallback,'MoveFuncDown'});
@@ -612,7 +617,7 @@ strctPanel.m_hEditMenu = uimenu(strctPanel.m_hMenu, 'Label', 'Edit');
 uimenu(strctPanel.m_hEditMenu, 'Label', 'Erase 3D', 'Callback', {@fnCallback,'SetEraseMode','3D'});
 uimenu(strctPanel.m_hEditMenu, 'Label', 'Erase 2D', 'Callback', {@fnCallback,'SetEraseMode','2D'});
 
-uimenu(strctPanel.m_hMenu, 'Label', 'Full Screen', 'Callback', {@fnCallback,'SetFullScreen'});
+uimenu(strctPanel.m_hMenu, 'Label', 'Full Screen', 'Callback', {@fnCallback,'SetFullScreen'}, 'Accelerator', 'F');
 uimenu(strctPanel.m_hMenu, 'Label', 'Zoom', 'Callback', {@fnCallback,'SetZoomMode'});
 uimenu(strctPanel.m_hMenu, 'Label', 'Zoom (Linked)', 'Callback', {@fnCallback,'SetLinkedZoomMode'});
 
@@ -661,8 +666,8 @@ uimenu(strctPanel.m_hChamberMenu, 'Label', 'Add Grid Using Direction', 'Callback
 
 
 strctPanel.m_hTargetMenu = uimenu(strctPanel.m_hMenu, 'Label', 'Target', 'Separator','on');
-uimenu(strctPanel.m_hTargetMenu, 'Label', 'Add Target', 'Callback', {@fnCallback,'AddTarget'});
-uimenu(strctPanel.m_hTargetMenu, 'Label', 'Move Target', 'Callback', {@fnCallback,'MoveTarget'});
+uimenu(strctPanel.m_hTargetMenu, 'Label', 'Add Target', 'Callback', {@fnCallback,'AddTarget'}, 'Accelerator', 'A');
+uimenu(strctPanel.m_hTargetMenu, 'Label', 'Move Target', 'Callback', {@fnCallback,'MoveTarget'}, 'Accelerator', 'T');
 
 
 
@@ -719,16 +724,16 @@ uimenu(strctPanel.m_hViewMenu, 'Label', 'Set this as default view', 'Callback', 
 
 
 
-strctPanel.m_hOnOffMenu = uimenu(strctPanel.m_hMenu, 'Label', '(on/off)');%, 'Callback', {@fnCallback,'ShowHideCrosshairs'});
+strctPanel.m_hOnOffMenu = uimenu(strctPanel.m_hMenu, 'Label', '(on/off)', 'Accelerator', 'X');%, 'Callback', {@fnCallback,'ShowHideCrosshairs'});
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Crosshair', 'Callback', {@fnCallback,'ShowHideCrosshairs'});
-uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Functional Overlay', 'Callback', {@fnCallback,'ShowFunctional'});
+uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Functional Overlay', 'Callback', {@fnCallback,'ShowFunctional'}, 'Accelerator', 'F');
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Chamber', 'Callback', {@fnCallback,'ShowHideChamber'});
-uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Targets', 'Callback', {@fnCallback,'ShowHideTargets'});
+uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Targets', 'Callback', {@fnCallback,'ShowHideTargets'}, 'Accelerator', 'T');
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Blood Vessels', 'Callback', {@fnCallback,'ShowHideBloodVessels'});
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Markers', 'Callback', {@fnCallback,'ShowHideMarkers'});
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Time Course', 'Callback', {@fnCallback,'ShowHideTimeCourse'});
-uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Long Chamber','Callback', {@fnCallback,'LongChamber'});
-uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Long Grid','Callback', {@fnCallback,'LongGrid'});
+uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Long Chamber','Callback', {@fnCallback,'LongChamber'}, 'Accelerator', 'C');
+uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Long Grid','Callback', {@fnCallback,'LongGrid'}, 'Accelerator', 'G');
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'OpenGL Rendering','Callback', {@fnCallback,'RendererToggle'});
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'Atlas','Callback', {@fnCallback,'ToggleAtlas'});
 uimenu(strctPanel.m_hOnOffMenu, 'Label', 'ROIs', 'Callback', {@fnCallback,'ToggleROIsVisibility'});

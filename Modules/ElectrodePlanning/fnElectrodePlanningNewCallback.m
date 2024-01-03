@@ -171,6 +171,8 @@ switch strCallback
         fnRemoveAnat();
     case 'RemoveFunc'
         fnRemoveFunc();
+    case 'RemoveFuncAll'
+        fn_RemoveFuncAll();
     case 'RenameChamber'
         fnRenameChamber();
     case 'RemoveChamber'
