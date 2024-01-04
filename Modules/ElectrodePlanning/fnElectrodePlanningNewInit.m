@@ -662,6 +662,7 @@ uimenu(strctPanel.m_hChamberMenu, 'Label', 'Flip direction', 'Callback', {@fnCal
 
 uimenu(strctPanel.m_hChamberMenu, 'Label', 'Move Grid', 'Callback', {@fnCallback,'SetGridTrans'});
 uimenu(strctPanel.m_hChamberMenu, 'Label', 'Add Grid Using Direction', 'Callback', {@fnCallback,'AddGridUsingDirection'},'Separator','on');
+uimenu(strctPanel.m_hChamberMenu, 'Label', 'Add Grid Using Two Targets', 'Callback', {@fnCallback,'AddGridUsingTwoTargets'});
 
 
 

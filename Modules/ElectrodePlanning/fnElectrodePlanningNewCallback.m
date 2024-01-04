@@ -205,6 +205,8 @@ switch strCallback
         fnMeasureDist();
     case 'AddGridUsingDirection'
         fnAddGridUsingDirection();
+    case 'AddGridUsingTwoTargets'
+        fn_AddGridUsingTwoTargets();
     case 'MeasureDistTopGrid'
         fnMeasureDistTopGrid();
     case 'SetDepth'
@@ -1076,6 +1078,69 @@ if strcmpi(g_strctModule.m_strMouseMode,'AddTwoClickObject')
     g_strctModule.m_strMouseMode = 'WaitForTwoClickEndPoint';
     
 end
+
+
+
+% % -- WL
+% if strcmpi(g_strctModule.m_strMouseMode,'ConfirmSelectInList') && strcmpi(strctMouseOp.m_strButton,'left')
+%     
+%     if ~isempty(strctMouseOp.m_hAxes)
+%         if ( strctMouseOp.m_hAxes == g_strctModule.m_strctPanel.m_strctXY.m_hAxes || ...
+%                 strctMouseOp.m_hAxes == g_strctModule.m_strctPanel.m_strctXZ.m_hAxes ||  ...
+%                 strctMouseOp.m_hAxes == g_strctModule.m_strctPanel.m_strctYZ.m_hAxes )
+%     
+%             strct_startPoint = g_strctModule.m_strctSavedSelectPoint
+%             % fnSelectTarget();
+%         end
+%     end
+% 
+% elseif strctMouseOp.m_hAxes == g_strctModule.m_strctPanel.m_strct3D.m_hAxes
+% end
+% 
+%     % g_strctModule.m_strctSavedSelectPoint = strctMouseOp;
+%     % g_strctModule.aiCurrTarget = get(g_strctModule.m_strctPanel.m_hTargetList,'value');
+% 
+%     % feval(g_strctModule.m_hClickCallback,strctStartPoint,strctEndPoint);
+%     
+% end
+% % -- 
+
+% -- WL
+if strcmpi(g_strctModule.m_strMouseMode,'ConfirmSelectInList') && strcmpi(strctMouseOp.m_strButton,'left')
+    g_strctModule.m_strctSavedClickedPoint1 = strctMouseOp;
+    g_strctModule.m_strMouseMode = 'ConfirmSelectInListComfirmed';  % allows for once-selection
+
+    pt3f_selectTargets_XYZ = fn_AddGridGetSelectTargets(g_strctModule);
+
+    feval(g_strctModule.m_hClickCallback, pt3f_selectTargets_XYZ(:, 1), pt3f_selectTargets_XYZ(:, 2));
+end
+% if strcmpi(g_strctModule.m_strMouseMode,'ConfirmSelectInListComfirmed') && strcmpi(strctMouseOp.m_strButton,'left')
+%     g_strctModule.m_strctSavedClickedPoint2 = strctMouseOp;
+%     g_strctModule.m_strMouseMode = 'ConfirmSelectInListComfirmed_finish';  % allows for once-selection
+% 
+%     pt3f_selectTarget2_XYZ = fn_AddGridGetSelectTargets(g_strctModule);
+% 
+% %     feval(g_strctModule.m_hClickCallback, strctMouseOp);
+% 
+% pt3f_selectTarget1_XYZ
+% pt3f_selectTarget2_XYZ
+
+
+% end
+
+
+
+
+% if strcmpi(g_strctModule.m_strMouseMode,'ConfirmSelectInList') && strcmpi(strctMouseOp.m_strButton,'left')
+%     g_strctModule.m_strctSavedClickedPoint1 = strctMouseOp;
+%     g_strctModule.m_strMouseMode = 'ConfirmSelectInListSecond';  % allows for once-selection
+% end
+
+% -- 
+
+
+
+
 
 if strcmp(g_strctModule.m_strMouseMode,'AddSingleClickObject') && strcmpi(strctMouseOp.m_strButton,'left')
     if ~isempty(strctMouseOp.m_hAxes)
