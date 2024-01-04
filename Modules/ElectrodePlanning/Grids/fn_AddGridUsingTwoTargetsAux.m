@@ -1,4 +1,4 @@
-function fn_AddGridUsingTwoTargetsAux(pt3fStartPoint,pt3fEndPoint)
+function fn_AddGridUsingTwoTargetsAux(pt3fStartPoint, pt3fEndPoint)
 global g_strctModule 
 
 a2fCRS_To_XYZ = g_strctModule.m_acAnatVol{g_strctModule.m_iCurrAnatVol}.m_a2fReg * g_strctModule.m_acAnatVol{g_strctModule.m_iCurrAnatVol}.m_a2fM;
