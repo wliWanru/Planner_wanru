@@ -1126,6 +1126,7 @@ end
 
 if strcmpi(g_strctModule.m_strMouseMode,'ConfirmSelectInList') && strcmpi(strctMouseOp.m_strButton,'left')
     g_strctModule.m_strMouseMode = 'ConfirmSelectInListFirstFinsihed';  % allows for once-selection
+    g_strctModule.tmp.m_strctSavedClickedPoint1 = strctMouseOp;
     g_strctModule.tmp.pt3f_selectTarget1_XYZ = fn_AddGridGetSelectSingleTarget(g_strctModule);
 
 end
@@ -1133,18 +1134,23 @@ end
 
 
 if strcmpi(g_strctModule.m_strMouseMode,'ConfirmSelectInListSecond') && strcmpi(strctMouseOp.m_strButton,'left')
-    g_strctModule.m_strctSavedClickedPoint2 = strctMouseOp;
+    g_strctModule.tmp.m_strctSavedClickedPoint2 = strctMouseOp;
     g_strctModule.m_strMouseMode = 'Scroll';
 
-    pt3f_selectTarget1_XYZ = g_strctModule.tmp.pt3f_selectTarget1_XYZ; 
-    pt3f_selectTarget2_XYZ = fn_AddGridGetSelectSingleTarget(g_strctModule);
-    
-    disp('-- from --');
-    disp(pt3f_selectTarget1_XYZ);
-    disp('-- to --');
-    disp(pt3f_selectTarget2_XYZ);
+    if g_strctModule.tmp.m_strctSavedClickedPoint1.m_hAxes == g_strctModule.tmp.m_strctSavedClickedPoint2.m_hAxes % Otherwise, it does not make sense!
 
-    feval(g_strctModule.m_hClickCallback, pt3f_selectTarget1_XYZ, pt3f_selectTarget2_XYZ);
+
+        pt3f_selectTarget1_XYZ = g_strctModule.tmp.pt3f_selectTarget1_XYZ;
+        pt3f_selectTarget2_XYZ = fn_AddGridGetSelectSingleTarget(g_strctModule);
+
+        disp('-- from --');
+        disp(pt3f_selectTarget1_XYZ);
+        disp('-- to --');
+        disp(pt3f_selectTarget2_XYZ);
+
+
+        feval(g_strctModule.m_hClickCallback, pt3f_selectTarget1_XYZ, pt3f_selectTarget2_XYZ);
+    end
 
 end
 

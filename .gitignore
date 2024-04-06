@@ -9,3 +9,9 @@ Documentation
 *.asv
 Maodan
 *.mat_backup
+
+*.SLDPRT
+*.STL
+
+
+*.form
